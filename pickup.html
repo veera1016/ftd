@@ -2,58 +2,76 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Pickup Request | Sky Express</title>
+  <title>Pickup Request | Sky Express International Couriers</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Request a courier pickup with Sky Express International Couriers. Fast, safe and reliable pickup service in Vizag.">
+
+  <!-- MAIN SITE CSS -->
+  <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
 
 <section class="pickup-section">
   <div class="pickup-container">
+
     <h2>Pickup Request</h2>
 
     <div class="pickup-form">
+
       <input type="text" id="name" placeholder="Name *">
       <input type="tel" id="phone" placeholder="Phone number *">
 
       <input type="text" id="pickup" placeholder="Pickup Location *">
-      <input type="email" id="email" placeholder="Your mail *">
+      <input type="email" id="email" placeholder="Your mail">
 
       <input type="text" id="delivery" placeholder="Delivery Destination *">
 
       <select id="service">
-        <option value="">Courier Type</option>
-        <option>Local</option>
-        <option>Domestic</option>
-        <option>International</option>
+        <option value="">Select Courier Type *</option>
+        <option value="Local">Local</option>
+        <option value="Domestic">Domestic</option>
+        <option value="International">International</option>
       </select>
 
-      <textarea id="message" placeholder="Message..."></textarea>
+      <textarea id="message" placeholder="Message (optional)"></textarea>
 
       <button onclick="sendPickup()">Send now</button>
+
     </div>
   </div>
 </section>
 
 <script>
 function sendPickup() {
-  const msg =
-`Pickup Request
-Name: ${name.value}
-Phone: ${phone.value}
-Email: ${email.value}
-Pickup Location: ${pickup.value}
-Delivery Location: ${delivery.value}
-Courier Type: ${service.value}
-Message: ${message.value}`;
 
-  if(!name.value || !phone.value || !pickup.value || !delivery.value){
-    alert("Please fill required fields");
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const pickup = document.getElementById("pickup").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const delivery = document.getElementById("delivery").value.trim();
+  const service = document.getElementById("service").value;
+  const message = document.getElementById("message").value.trim();
+
+  if (!name || !phone || !pickup || !delivery || !service) {
+    alert("Please fill all required fields");
     return;
   }
 
+  const whatsappMessage =
+`📦 *Pickup Request*
+------------------------
+👤 Name: ${name}
+📞 Phone: ${phone}
+📧 Email: ${email}
+📍 Pickup: ${pickup}
+📦 Delivery: ${delivery}
+🚚 Courier Type: ${service}
+💬 Message: ${message}`;
+
   window.open(
-    "https://wa.me/918121592299?text=" + encodeURIComponent(msg),
+    "https://wa.me/918121592299?text=" + encodeURIComponent(whatsappMessage),
     "_blank"
   );
 }
