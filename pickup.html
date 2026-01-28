@@ -8,26 +8,49 @@
 </head>
 <body>
 
-<section class="section">
-  <h2 class="section-title">Request Pickup</h2>
+<section class="pickup-section">
+  <div class="pickup-container">
+    <h2>Pickup Request</h2>
 
-  <input id="name" class="input" placeholder="Your Name">
-  <input id="phone" class="input" placeholder="Phone Number">
-  <input id="address" class="input" placeholder="Pickup Address">
-  <input id="service" class="input" placeholder="Service Type (Local / Domestic / Intl)">
+    <div class="pickup-form">
+      <input type="text" id="name" placeholder="Name *">
+      <input type="tel" id="phone" placeholder="Phone number *">
 
-  <br><br>
-  <button class="btn whatsapp" onclick="sendPickup()">Send via WhatsApp</button>
+      <input type="text" id="pickup" placeholder="Pickup Location *">
+      <input type="email" id="email" placeholder="Your mail *">
+
+      <input type="text" id="delivery" placeholder="Delivery Destination *">
+
+      <select id="service">
+        <option value="">Courier Type</option>
+        <option>Local</option>
+        <option>Domestic</option>
+        <option>International</option>
+      </select>
+
+      <textarea id="message" placeholder="Message..."></textarea>
+
+      <button onclick="sendPickup()">Send now</button>
+    </div>
+  </div>
 </section>
 
 <script>
-function sendPickup(){
-  const msg = 
-`Pickup Request:
+function sendPickup() {
+  const msg =
+`Pickup Request
 Name: ${name.value}
 Phone: ${phone.value}
-Address: ${address.value}
-Service: ${service.value}`;
+Email: ${email.value}
+Pickup Location: ${pickup.value}
+Delivery Location: ${delivery.value}
+Courier Type: ${service.value}
+Message: ${message.value}`;
+
+  if(!name.value || !phone.value || !pickup.value || !delivery.value){
+    alert("Please fill required fields");
+    return;
+  }
 
   window.open(
     "https://wa.me/918121592299?text=" + encodeURIComponent(msg),
