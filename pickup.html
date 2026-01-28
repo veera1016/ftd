@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pickup Request | Sky Express</title>
+  <meta name="description" content="Request a courier pickup with Sky Express International Couriers in Vizag.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section class="section">
+  <h2 class="section-title">Request Pickup</h2>
+
+  <input id="name" placeholder="Your Name" class="input">
+  <input id="phone" placeholder="Phone Number" class="input">
+  <input id="address" placeholder="Pickup Address" class="input">
+  <input id="service" placeholder="Courier Type (Local / Domestic / Intl)" class="input">
+
+  <br><br>
+  <button class="btn whatsapp" onclick="requestPickup()">Send via WhatsApp</button>
+</section>
+
+<script>
+function requestPickup(){
+  const msg =
+`Pickup Request:
+Name: ${name.value}
+Phone: ${phone.value}
+Address: ${address.value}
+Service: ${service.value}`;
+
+  window.open(
+    "https://wa.me/918121592299?text=" + encodeURIComponent(msg),
+    "_blank"
+  );
+}
+</script>
+
+</body>
+</html>
