@@ -1,18 +1,29 @@
-function openEnquiry(service){
-  document.getElementById("modalTitle").innerText =
-    "Enquire about " + service;
+function sendPickup() {
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const pickup = document.getElementById("pickupLoc").value.trim();
+  const delivery = document.getElementById("delivery").value.trim();
+  const type = document.getElementById("type").value;
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
 
-  document.getElementById("waBtn").href =
-    "https://wa.me/918121592299?text=" +
-    encodeURIComponent("Hello, I want to enquire about " + service);
+  if (!name || !phone || !pickup || !delivery || !type) {
+    alert("Please fill all required fields");
+    return;
+  }
 
-  document.getElementById("mailBtn").href =
-    "mailto:skyexpress.vskp@gmail.com?subject=" +
-    encodeURIComponent("Enquiry about " + service);
+  const text =
+`Pickup Request
+Name: ${name}
+Phone: ${phone}
+Email: ${email}
+Pickup: ${pickup}
+Delivery: ${delivery}
+Courier Type: ${type}
+Message: ${message}`;
 
-  document.getElementById("modal").style.display = "flex";
-}
-
-function closeModal(){
-  document.getElementById("modal").style.display = "none";
+  window.open(
+    "https://wa.me/918121592299?text=" + encodeURIComponent(text),
+    "_blank"
+  );
 }
